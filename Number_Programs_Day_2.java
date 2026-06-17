@@ -126,6 +126,12 @@ class NumberProblems{
 		return ((double)Math.sqrt(n)) % 1 == 0;
 		//Math.sqrt 8.0,10.0 -> 0.0
 	}
+	public static void printPerfectSquareUpToN(int n) {
+        for(int i = 1; i <= n; i++) {
+            if(isSquare(i))
+                System.out.print(i + ", ");
+        }
+    }
 	// Buzz Number
 	public static boolean isBuzz(int n){
 		if(n%10==7 || n%7==0){
@@ -194,7 +200,7 @@ class NumberProblems{
 		}
 	}
 
-	//pronic number
+	// HW 1 pronic number
 	public static boolean isPronic(int n){
 		int k=0;
 		for(int i=0;i<n;i++){
@@ -211,7 +217,7 @@ class NumberProblems{
         }
     }
 
-	//unique number
+	// HW 2 unique number
 	public static void printUnique(int lo,int up){
 		for(int i=lo;i<up;i++){
 			int a=i/100;
@@ -223,6 +229,56 @@ class NumberProblems{
 			}
 		}
 	}
+
+	// HW3 nelson number
+	public static  boolean isNelson(int n){
+		int num=0;
+		while(num < n){
+			num =num *10+1;
+		}
+		return num == n;
+	}
+
+	public static void printNelsonUptoN(int n){
+		for(int i=1;i<n;i++){
+			if(isNelson(i)){
+				System.out.print(i+" ");
+			}
+		}
+	}
+
+	// HW 4 Peterson number
+	public static boolean isPeterson(int n){
+    	int temp = n;
+    	int sum = 0;
+		while(temp > 0){
+			int digit = temp % 10;
+			int fact = 1;
+			for(int i = 1; i <= digit; i++){
+				fact *= i;
+			}
+			sum += fact;
+			temp /= 10;
+		}
+		return sum == n;
+	}
+
+	public static void printPetersonUptoN(int n){
+		for(int i=1;i<n;i++){
+			if(isPeterson(i)){
+				System.out.print(i+" ");
+			}
+		}
+	}
+
+	// HW 5
+	/*public static void printPerfectSquarePerfectNumber(int l, int r){
+		for(int i = l; i <= r; i++){
+			if(printPerfectNumber(i) && printPerfectSquareUpToN(i))
+            	System.out.print(i + " ");
+        }
+    }*/
+
 	public static void main(String args[]){
 		//System.out.println(isSpy(123));
 		//printSpyUpToN(10000);
@@ -241,6 +297,11 @@ class NumberProblems{
 		//generateJacobsthal(10);
 		//System.out.println(isPronic(6));
 		//printPronicUpToN(50);
-		printUnique(100, 999);
+		//printUnique(100, 999);
+		//System.out.println(isNelson(111));
+		//printNelsonUptoN(1000);
+		//System.out.println(isPeterson(145));
+		printPetersonUptoN(100000);
+		//System.out.println(printPerfectSquarePerfectNumber(1, 100));
 	}
 }
