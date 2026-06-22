@@ -94,24 +94,118 @@ class Search_day_7{
 		return ans;
 	}
 	
+	//Q6 Book Allocation Problem
+	public static int findPages(int[] a,int m,int n){
+		if(m>n) return -1;
+		int low =0,high =0;
+		for(int book:a){
+			low = Math.max(low,book);
+			high += book;
+		}
+		
+		int ans = -1;
+		while(low <= high){
+			int mid = low + (high - low) /2;
+			if(isPossible(a,m,mid)){
+				ans = mid;
+				high = mid -1;
+			}else low = mid +1;
+		}
+		return ans;
+	}
+	
+	private static boolean isPossible(int[] a,int students, int maxpages){
+		int studentsRequired = 1;
+		int currentPages = 0;
+		
+		for(int book : a){
+			if(currentPages + book > maxpages){
+				studentsRequired++;
+				currentPages = book;
+				if(studentsRequired > students) return false;
+			}
+			else currentPages += book;
+		}
+		return true;
+	}
+	
+	
+	//Q7
+	public static int aggressiveCows(int[] stalls,int k){
+		int n=stalls.length;
+		int low =1,high stalls[n-1]
+	}
+	
+	private boolean canplaceCows(int[] stalls,int cows,int dist){
+		int count =1;
+		int lastPlaced = stalls[0];
+		
+		for(int i=1,i<stalls.length;i++){
+			count++;
+			lastPlaced = stalls[i];
+			if(count >=cows) return true;
+		}
+	}
+	
+	
+	//Q8
+	public static int painterPartition(int[] boards,int k){
+		int n = boards.length;
+		if(k > n){
+			int maxBoard = 0;
+			for(int board: boards){
+				maxBoard = Math.max(maxBoard, board);
+			}
+			return maxBoard;
+		}
+		int low=0,high =0;
+		
+	}
+	
+	private static boolean isPossible(int[] a,int students, int maxpages){
+		int studentsRequired = 1;
+		int currentPages = 0;
+		
+		for(int book : a){
+			if(currentPages + book > maxpages){
+				studentsRequired++;
+				currentPages = book;
+				if(studentsRequired > students) return false;
+			}
+			else currentPages += book;
+		}
+		return true;
+	}
+	
+	
 	public static void main(String[] args){
+		
 		//Q1 
 		/*int[] a={1,2,3,4,5};
 		System.out.print(searchValue(a,50));*/
+		
 		
 		//Q2 
 		/*int[] nums = {5, 7, 7, 8, 8, 10};
 		int target = 8;
 		System.out.println(Arrays.toString(searchRange(nums, target)));*/
 		
+		
 		//Q3 
 		/*int[] x={30,99,55,0,10,20};
 		System.out.print(findMin(x));*/
 		
+		
 		//Q4 
 		//System.out.println(searchRotated(new int[]{4,5,6,7,0,1,2}, 0));
 		
+		
 		//Q5
-		System.out.print(sqrt(40));
+		//System.out.print(sqrt(40));
+		
+		//Q6
+		int[] books = {12, 34, 67, 90};
+		int students = 2;
+		System.out.println(findPages(books, students, books.length));
 	}
 }
